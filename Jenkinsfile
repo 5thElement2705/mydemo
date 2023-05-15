@@ -2,24 +2,34 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code from Git
+                checkout scm
+            }
+        }
+
         stage('Build') {
             steps {
-                // Add your build steps here
-                sh 'mvn clean install'
+                // Set the correct directory
+                dir('my_demo_main') {
+                    // Execute Maven command
+                    sh 'mvn clean install'
+                }
             }
         }
 
         stage('Test') {
             steps {
                 // Add your test steps here
-                sh 'mvn test'
+                // ...
             }
         }
 
         stage('Deploy') {
             steps {
                 // Add your deployment steps here
-                sh 'mvn deploy'
+                // ...
             }
         }
     }
@@ -27,12 +37,12 @@ pipeline {
     post {
         success {
             // Actions to perform when the pipeline succeeds
-            echo 'Pipeline completed successfully!'
+            echo 'Job executed successfully!'
         }
 
         failure {
             // Actions to perform when the pipeline fails
-            echo 'Pipeline failed!'
+            echo 'Job execution failed!'
         }
     }
 }
