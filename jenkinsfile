@@ -2,33 +2,10 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Hello') {
             steps {
-                echo 'Building...'
-                // Add your build commands here
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Testing...'
-                // Add your test commands here
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                // Add your deployment commands here
+                echo 'Hello World'
             }
         }
     }
-
-    post {
-        success {
-            echo 'Job executed successfully!'
-            // Additional actions for successful build
-        }
-
-        failure {
-           
+}
