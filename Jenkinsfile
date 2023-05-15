@@ -4,32 +4,29 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your source code from Git
-                checkout scm
+                // Checkout the source code from the GitHub repository
+                git 'https://github.com/5thElement2705/mydemo.git'
             }
         }
 
         stage('Build') {
             steps {
-                // Set the correct directory
-                dir('my_demo_main') {
-                    // Execute Maven command
-                    sh 'mvn clean install'
-                }
+                // Add your build steps here
+                sh 'your-build-command'
             }
         }
 
         stage('Test') {
             steps {
                 // Add your test steps here
-                // ...
+                sh 'your-test-command'
             }
         }
 
         stage('Deploy') {
             steps {
                 // Add your deployment steps here
-                // ...
+                sh 'your-deploy-command'
             }
         }
     }
